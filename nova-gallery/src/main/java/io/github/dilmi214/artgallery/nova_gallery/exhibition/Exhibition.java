@@ -1,16 +1,28 @@
 package io.github.dilmi214.artgallery.nova_gallery.exhibition;
 
 import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
 public class Exhibition {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(nullable = false, length = 250)
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private Location location;
+    @ManyToMany
+    @JoinTable(
+            name = "exhibition_artpiece",
+            joinColumns = @JoinColumn(name = "exhibition_id"),
+            inverseJoinColumns = @JoinColumn(name = "artpiece_id")
+    )
     private List<ArtPiece> artPieces;
 
     public Exhibition() {

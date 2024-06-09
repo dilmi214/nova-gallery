@@ -1,13 +1,18 @@
 package io.github.dilmi214.artgallery.nova_gallery.curator;
 
 import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Curator {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
+    @OneToMany(mappedBy = "curator", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArtPiece> managedArtPieces;
 
     public Curator() {

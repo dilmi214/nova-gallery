@@ -1,13 +1,21 @@
 package io.github.dilmi214.artgallery.nova_gallery.artist;
 
 import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Artist {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false, length = 250)
     private String name;
+    @Column(nullable = false, length = 250)
     private String bio;
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArtPiece> artPieces;
 
     public Artist() {

@@ -2,12 +2,22 @@ package io.github.dilmi214.artgallery.nova_gallery.sale;
 
 import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
 import io.github.dilmi214.artgallery.nova_gallery.customer.Customer;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
 public class Sale {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "artpiece_id")
     private ArtPiece artPiece;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
     private LocalDate saleDate;
     private Double price;
