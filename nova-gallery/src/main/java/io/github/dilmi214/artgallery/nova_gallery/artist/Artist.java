@@ -1,29 +1,28 @@
 package io.github.dilmi214.artgallery.nova_gallery.artist;
 
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.Artpiece;
+import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Artist {
     private Integer id;
     private String name;
     private String bio;
-    private List<Artpiece> artpieces;
+    private List<ArtPiece> artPieces;
 
     public Artist() {
     }
 
-    public Artist(Integer id, String name, String bio, List<Artpiece> artpieces) {
+    public Artist(Integer id, String name, String bio, List<ArtPiece> artPieces) {
         this.id = id;
         this.name = name;
         this.bio = bio;
-        this.artpieces = artpieces;
+        this.artPieces = artPieces;
     }
 
-    public Artist(String name, List<Artpiece> artpieces, String bio) {
+    public Artist(String name, List<ArtPiece> artPieces, String bio) {
         this.name = name;
-        this.artpieces = artpieces;
+        this.artPieces = artPieces;
         this.bio = bio;
     }
 
@@ -51,12 +50,12 @@ public class Artist {
         this.bio = bio;
     }
 
-    public List<Artpiece> getArtpieces() {
-        return artpieces;
+    public List<ArtPiece> getArtpieces() {
+        return artPieces;
     }
 
-    public void setArtpieces(List<Artpiece> artpieces) {
-        this.artpieces = artpieces;
+    public void setArtpieces(List<ArtPiece> artPieces) {
+        this.artPieces = artPieces;
     }
 
     @Override
@@ -65,7 +64,7 @@ public class Artist {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", bio='" + bio + '\'' +
-                ", artpieces=" + artpieces +
+                ", artpieces=" + artPieces +
                 '}';
     }
 }
