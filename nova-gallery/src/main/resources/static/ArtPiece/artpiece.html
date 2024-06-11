@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Create Art Piece</title>
+</head>
+<body>
+<h1>Create Art Piece</h1>
+<form id="artPieceForm">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" name="price" step="0.01" min="0" required><br><br>
+
+    <label for="artist">Select Artist:</label><br>
+    <select id="artist" name="artist" required>
+        <!-- Artists will be dynamically added here -->
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>

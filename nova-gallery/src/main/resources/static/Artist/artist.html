@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Artist Management</title>
+        <script src="artist.js" defer></script>
+        <link rel="stylesheet" href="artist.css">
+    </head>
+    <body>
+        <h1>Artist Addition</h1>
+        <form id="createArtistForm">
+            <label for="artistName">Artist Name:</label>
+            <input type="text" id="artistName" name="artistName" required>
+            <br>
+            <label for="artistBio">Artist Bio:</label>
+            <input type="text" id="artistBio" name="artistBio" required>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div id="artists">
+            <h1>All Artists</h1>
+            <div id="artistList"></div>
+        </div>
+    </body>
+</html>
