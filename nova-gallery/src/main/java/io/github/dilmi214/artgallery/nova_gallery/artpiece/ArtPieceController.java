@@ -36,9 +36,17 @@ public class ArtPieceController {
         return artPieceService.assignArtistToArtPiece(artPieceId, artistId);
     }
 
+//    @PostMapping("/artPiece")
+//    public ResponseEntity<ArtPiece> createArtPiece(@RequestBody ArtPiece artPiece, @RequestParam Integer artistId) {
+//        ArtPiece savedArtPiece = artPieceService.createAndAssignArtPiece(artPiece, artistId);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(savedArtPiece);
+//    }
+
     @PostMapping("/artPiece")
-    public ResponseEntity<ArtPiece> createArtPiece(@RequestBody ArtPiece artPiece, @RequestParam Integer artistId) {
+    public void createArtPieceAndAssign(@RequestBody ArtPiece artPiece) {
+        Integer artistId = artPiece.getArtist().getId();
         ArtPiece savedArtPiece = artPieceService.createAndAssignArtPiece(artPiece, artistId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedArtPiece);
+
     }
+
 }

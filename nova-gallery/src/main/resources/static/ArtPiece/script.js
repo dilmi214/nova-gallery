@@ -17,11 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('artPieceForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const formData = new FormData(this);
+        // Construct the ArtPiece object
+        const artPiece = {
+            title: document.getElementById('title').value,
+            description: document.getElementById('description').value,
+            price: parseFloat(document.getElementById('price').value), // Convert to number
+            artist: { id: parseInt(document.getElementById('artist').value) } // Include artist ID
+        };
 
-        fetch('/api/artpieces', {
+        // Send the request
+        fetch('/artPieces/artPiece', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(artPiece)
         })
         .then(response => {
             if (!response.ok) {
