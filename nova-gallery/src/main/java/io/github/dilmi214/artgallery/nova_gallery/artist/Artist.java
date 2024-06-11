@@ -1,5 +1,6 @@
 package io.github.dilmi214.artgallery.nova_gallery.artist;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
 import jakarta.persistence.*;
 
@@ -15,7 +16,9 @@ public class Artist {
     private String name;
     @Column(nullable = false, length = 250)
     private String bio;
-    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "artist")
     private List<ArtPiece> artPieces;
 
     public Artist() {
@@ -58,11 +61,11 @@ public class Artist {
         this.bio = bio;
     }
 
-    public List<ArtPiece> getArtpieces() {
+    public List<ArtPiece> getArtPieces() {
         return artPieces;
     }
 
-    public void setArtpieces(List<ArtPiece> artPieces) {
+    public void setArtPieces(List<ArtPiece> artPieces) {
         this.artPieces = artPieces;
     }
 

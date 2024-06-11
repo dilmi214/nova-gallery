@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 public class ArtPiece {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(nullable = false, length = 250)
     private String title;
     @Column(nullable = false, length = 250)
@@ -19,8 +20,8 @@ public class ArtPiece {
     @Column(nullable = false)
     private Double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 
     @ManyToMany(mappedBy = "artPieces")
@@ -37,32 +38,29 @@ public class ArtPiece {
     public ArtPiece() {
     }
 
-    public ArtPiece(int id, String title, String description, Double price, Artist artist, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(Integer id, String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.artist = artist;
         this.exhibitions = exhibitions;
         this.sale = sale;
-        this.curator = curator;
     }
 
-    public ArtPiece(String title, String description, Double price, Artist artist, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
         this.title = title;
         this.description = description;
         this.price = price;
-        this.artist = artist;
         this.exhibitions = exhibitions;
         this.sale = sale;
         this.curator = curator;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -90,14 +88,6 @@ public class ArtPiece {
         this.price = price;
     }
 
-    public Artist getArtist() {
-        return artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
-
     public List<Exhibition> getExhibitions() {
         return exhibitions;
     }
@@ -122,6 +112,14 @@ public class ArtPiece {
         this.curator = curator;
     }
 
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void assignArtist(Artist artist) {
+        this.artist = artist;
+    }
+
     @Override
     public String toString() {
         return "ArtPiece{" +
@@ -129,7 +127,6 @@ public class ArtPiece {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", artist=" + artist +
                 ", exhibitions=" + exhibitions +
                 ", sale=" + sale +
                 ", curator=" + curator +
