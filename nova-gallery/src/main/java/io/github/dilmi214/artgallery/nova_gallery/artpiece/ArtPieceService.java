@@ -32,8 +32,16 @@ public class ArtPieceService {
         return artPieceRepository.save(artPiece);
     }
 
+    //PUT - assign artist to art piece after both have been created separately
     ArtPiece assignArtistToArtPiece(Integer artPieceId, Integer artistId) {
         ArtPiece artPiece = artPieceRepository.findById(artPieceId).orElseThrow();
+        Artist artist = artistRepository.findById(artistId).orElseThrow();
+        artPiece.assignArtist(artist);
+        return artPieceRepository.save(artPiece);
+    }
+
+    @Transactional
+    public ArtPiece createAndAssignArtPiece(ArtPiece artPiece, Integer artistId) {
         Artist artist = artistRepository.findById(artistId).orElseThrow();
         artPiece.assignArtist(artist);
         return artPieceRepository.save(artPiece);
