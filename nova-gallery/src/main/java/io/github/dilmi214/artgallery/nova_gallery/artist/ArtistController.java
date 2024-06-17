@@ -1,11 +1,13 @@
 package io.github.dilmi214.artgallery.nova_gallery.artist;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/artists")
 public class ArtistController {
 
@@ -15,7 +17,15 @@ public class ArtistController {
         this.artistService = artistService;
     }
 
+    @GetMapping("")
+    public String getArtistTemplate(Model model) {
+        // Add data to the model for dynamic content in the template
+        //model.addAttribute("message", "Welcome to the Artist page");
+        return "Artist/artist"; // Name of the Thymeleaf template
+    }
+
     @GetMapping("/all")
+    @ResponseBody
     List<Artist> getAll(){
         return artistService.getAll();
     }
@@ -27,6 +37,7 @@ public class ArtistController {
 //
     //creates artist without art pieces
     @PostMapping("/artist/save")
+    @ResponseBody
     public Artist createArtist(@RequestBody Artist artist) {
         return artistService.saveArtist(artist);
     }
