@@ -40,12 +40,20 @@ public class ArtPieceService {
         return artPieceRepository.save(artPiece);
     }
 
+//    @Transactional
+//    public ArtPiece createAndAssignArtPiece(ArtPiece artPiece, Integer artistId) {
+//        Artist artist = artistRepository.findById(artistId).orElseThrow();
+//        artPiece.assignArtist(artist);
+//        return artPieceRepository.save(artPiece);
+//    }
+
     @Transactional
     public ArtPiece createAndAssignArtPiece(ArtPiece artPiece, Integer artistId) {
         Artist artist = artistRepository.findById(artistId).orElseThrow();
         artPiece.assignArtist(artist);
         return artPieceRepository.save(artPiece);
     }
+
 
 
 

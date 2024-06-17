@@ -24,6 +24,10 @@ public class ArtPieceController {
         return artPieceService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public ArtPiece getById(@PathVariable Integer id){
+        return artPieceService.getById(id).orElse(null);
+    }
 
     @PostMapping("/artPiece/save")
     public ArtPiece createArtPiece(@RequestBody ArtPiece artPiece) {
@@ -36,9 +40,17 @@ public class ArtPieceController {
         return artPieceService.assignArtistToArtPiece(artPieceId, artistId);
     }
 
+//    @PostMapping("/artPiece")
+//    public ResponseEntity<ArtPiece> createArtPiece(@RequestBody ArtPiece artPiece, @RequestParam Integer artistId) {
+//        ArtPiece savedArtPiece = artPieceService.createAndAssignArtPiece(artPiece, artistId);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(savedArtPiece);
+//    }
+
     @PostMapping("/artPiece")
-    public ResponseEntity<ArtPiece> createArtPiece(@RequestBody ArtPiece artPiece, @RequestParam Integer artistId) {
+    public void createArtPieceAndAssign(@RequestBody ArtPiece artPiece) {
+        Integer artistId = artPiece.getArtist().getId();
         ArtPiece savedArtPiece = artPieceService.createAndAssignArtPiece(artPiece, artistId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedArtPiece);
+
     }
+
 }
