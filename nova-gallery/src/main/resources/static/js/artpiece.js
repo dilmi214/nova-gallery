@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch artists and populate dropdown menu
-    fetch('/artists')
+    fetch('/artists/all')
         .then(response => response.json())
         .then(data => {
             const artistDropdown = document.getElementById('artist');

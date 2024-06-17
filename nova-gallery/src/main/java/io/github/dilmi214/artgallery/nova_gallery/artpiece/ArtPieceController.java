@@ -24,6 +24,10 @@ public class ArtPieceController {
         return artPieceService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public ArtPiece getById(@PathVariable Integer id){
+        return artPieceService.getById(id).orElse(null);
+    }
 
     @PostMapping("/artPiece/save")
     public ArtPiece createArtPiece(@RequestBody ArtPiece artPiece) {
