@@ -15,17 +15,36 @@
 
 
     <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
-        <a href="artists">Artists</a>
-        <a href="artPieces">Art</a>
-        <a href="#contact">Contact</a>
+        <a href="#home">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn active">Artists</button>
+            <div class="dropdown-content">
+                <a href="/artists">Add Artist</a>
+                <a href="/artists/allArtists">View Artist</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" >Art</button>
+            <div class="dropdown-content">
+                <a href="/artPieces">Add Art Piece</a>
+                <a href="/artPieces/allArtPieces">View All Art</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" >Exhibitions</button>
+            <div class="dropdown-content">
+                <a href="#">Add Exhibition</a>
+                <a href="#">View Exhibitions</a>
+            </div>
+        </div>
         <a href="#about">About</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
-        <h1>Artist Addition</h1>
+
         <form id="createArtistForm">
+            <h1>Artist Addition</h1>
             <label for="name">Artist Name:</label>
             <input type="text" id="artistName" name="artistName" required>
             <br>
@@ -35,9 +54,5 @@
             <input type="submit" value="Submit">
         </form>
 
-        <div id="artists">
-            <h1>All Artists</h1>
-            <div id="artistList"></div>
-        </div>
     </body>
 </html>

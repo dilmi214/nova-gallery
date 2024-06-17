@@ -24,6 +24,13 @@ public class ArtistController {
         return "Artist/artist"; // Name of the Thymeleaf template
     }
 
+    @GetMapping("/allArtists")
+    public String getArtists(Model model) {
+        // Add data to the model for dynamic content in the template
+        //model.addAttribute("message", "Welcome to the Artist page");
+        return "Artist/allArtists"; // Name of the Thymeleaf template
+    }
+
     @GetMapping("/all")
     @ResponseBody
     List<Artist> getAll(){

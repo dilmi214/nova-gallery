@@ -1,6 +1,6 @@
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: #341308;
   overflow: hidden;
 }
 
@@ -8,7 +8,7 @@
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #F2F1F0;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -17,13 +17,18 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #D9CBC2;
   color: black;
 }
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #b2a0d4;
+  background-color: #AF8B70;
+  color: white;
+}
+
+.topnav button.active {
+  background-color: #AF8B70;
   color: white;
 }
 
@@ -54,4 +59,75 @@
     display: block;
     text-align: left;
   }
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Style for the dropdown button */
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #341308;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* Add hover effect for the dropdown button */
+.dropdown:hover .dropbtn,
+.dropdown-content:hover .dropbtn {
+    background-color: #D9CBC2;
+    color: black;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #DDD;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 50px; /* Adjust this value to control the dropdown position */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Change the color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: hsla(26, 28%, 56%, 0.6);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ensure navbar links have the same styles as dropdown content when active or hovering */
+
+.dropdown .dropbtn:hover,
+.topnav a:hover {
+  background-color: #D9CBC2;
+  color: black;
+}
+
+/* Ensure the same hover effect for the dropdown button */
+.dropdown .dropbtn.active,
+.topnav a.active, {
+  background-color: #AF8B70;
+  color: black;
 }
