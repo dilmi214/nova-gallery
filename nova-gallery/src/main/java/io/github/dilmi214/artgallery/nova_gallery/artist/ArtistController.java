@@ -31,6 +31,11 @@ public class ArtistController {
         return "Artist/allArtists"; // Name of the Thymeleaf template
     }
 
+    @GetMapping("/artistProfile/{id}")
+    public String getArtistProfile(Model model){
+        return "Artist/artistProfile";
+    }
+
     @GetMapping("/all")
     @ResponseBody
     List<Artist> getAll(){
