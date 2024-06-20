@@ -54,6 +54,9 @@ public class ArtPieceService {
         return artPieceRepository.save(artPiece);
     }
 
+    public List<ArtPiece> findByArtistId(Integer artistId){
+        return artPieceRepository.findByArtistId(artistId);
+    }
 
 
 

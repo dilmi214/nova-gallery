@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -14,18 +13,28 @@ import java.util.List;
 public class ArtPieceController {
 
     private final ArtPieceService artPieceService;
-    private final ArtistService artistService;
 
-    public ArtPieceController(ArtPieceService artPieceService, ArtistService artistService) {
+    public ArtPieceController(ArtPieceService artPieceService) {
         this.artPieceService = artPieceService;
-        this.artistService = artistService;
     }
 
     @GetMapping("")
     public String getArtistTemplate(Model model) {
         // Add data to the model for dynamic content in the template
         //model.addAttribute("message", "Welcome to the Artist page");
-        return "Artpiece/artpiece"; // Name of the Thymeleaf template
+        return "Artpiece/addArtPiece"; // Name of the Thymeleaf template
+    }
+
+    @GetMapping("/view")
+    public String getArtPieces(Model model) {
+        // Add data to the model for dynamic content in the template
+        //model.addAttribute("message", "Welcome to the Artist page");
+        return "Artpiece/allArt"; // Name of the Thymeleaf template
+    }
+
+    @GetMapping("/artPiece/{id}")
+    public String getArtPiece(Model model){
+        return "Artpiece/artPiece";
     }
 
     @GetMapping("/all")
@@ -40,11 +49,11 @@ public class ArtPieceController {
         return artPieceService.getById(id).orElse(null);
     }
 
-    @PostMapping("/artPiece/save")
-    @ResponseBody
-    public ArtPiece createArtPiece(@RequestBody ArtPiece artPiece) {
-        return artPieceService.saveArtPiece(artPiece);
-    }
+//    @PostMapping("/artPiece/save")
+//    @ResponseBody
+//    public ArtPiece createArtPiece(@RequestBody ArtPiece artPiece) {
+//        return artPieceService.saveArtPiece(artPiece);
+//    }
 
 
     @PutMapping("/{artPieceId}/artist/{artistId}")
@@ -65,6 +74,12 @@ public class ArtPieceController {
         Integer artistId = artPiece.getArtist().getId();
         ArtPiece savedArtPiece = artPieceService.createAndAssignArtPiece(artPiece, artistId);
 
+    }
+
+    @GetMapping("/artist/{artistId}")
+    @ResponseBody
+    public List<ArtPiece> getByArtistId(@PathVariable Integer artistId){
+        return artPieceService.findByArtistId(artistId);
     }
 
 }

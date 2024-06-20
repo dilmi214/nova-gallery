@@ -20,9 +20,14 @@ public class ArtPiece {
     @Column(nullable = false)
     private Double price;
 
+//    @Lob
+//    @Column(name = "image", columnDefinition="BLOB")
+//    private byte[] image;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
+
 
     @ManyToMany(mappedBy = "artPieces")
     private List<Exhibition> exhibitions;
@@ -38,19 +43,21 @@ public class ArtPiece {
     public ArtPiece() {
     }
 
-    public ArtPiece(Integer id, String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(Integer id, String title, String description, Double price, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.exhibitions = exhibitions;
         this.sale = sale;
+        this.curator = curator;
     }
 
-    public ArtPiece(String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(String title, String description, Double price, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.title = title;
         this.description = description;
         this.price = price;
+        //this.image = image;
         this.exhibitions = exhibitions;
         this.sale = sale;
         this.curator = curator;
@@ -67,6 +74,14 @@ public class ArtPiece {
     public String getTitle() {
         return title;
     }
+
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -132,4 +147,5 @@ public class ArtPiece {
                 ", curator=" + curator +
                 '}';
     }
+
 }
