@@ -19,6 +19,8 @@ public class ArtPiece {
     private String description;
     @Column(nullable = false)
     private Double price;
+    @Column(nullable = true)
+    private String imageUrl;
 
 //    @Lob
 //    @Column(name = "image", columnDefinition="BLOB")
@@ -43,21 +45,22 @@ public class ArtPiece {
     public ArtPiece() {
     }
 
-    public ArtPiece(Integer id, String title, String description, Double price, List<Exhibition> exhibitions, Sale sale, Curator curator) {
+    public ArtPiece(Integer id, String title, String description, Double price, String imageUrl, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
+        this.imageUrl = imageUrl;
         this.exhibitions = exhibitions;
         this.sale = sale;
         this.curator = curator;
     }
 
-    public ArtPiece(String title, String description, Double price, List<Exhibition> exhibitions, Sale sale, Curator curator) {
+    public ArtPiece(String title, String description, Double price, String imageUrl, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.title = title;
         this.description = description;
         this.price = price;
-        //this.image = image;
+        this.imageUrl = imageUrl;
         this.exhibitions = exhibitions;
         this.sale = sale;
         this.curator = curator;
@@ -133,6 +136,14 @@ public class ArtPiece {
 
     public void assignArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

@@ -17,21 +17,43 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('artPieceForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Construct the ArtPiece object
-        const artPiece = {
-            title: document.getElementById('title').value,
-            description: document.getElementById('description').value,
-            price: parseFloat(document.getElementById('price').value), // Convert to number
-            artist: { id: parseInt(document.getElementById('artist').value) } // Include artist ID
-        };
+        const imageFile = document.getElementById('image').files[0];
+        if (!imageFile) {
+            console.error('Image file is required');
+            return;
+        }
 
-        // Send the request
-        fetch('/artPieces/artPiece', {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+
+        // Upload image to Cloudinary
+        fetch('/uploadImage', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(artPiece)
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.url) {
+                throw new Error('Failed to upload image');
+            }
+
+            // Construct the ArtPiece object
+            const artPiece = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                price: parseFloat(document.getElementById('price').value),
+                artist: { id: parseInt(document.getElementById('artist').value) },
+                imageUrl: data.url //  Cloudinary image URL
+            };
+
+            // Send the request
+            return fetch('/artPieces/artPiece', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(artPiece)
+            });
         })
         .then(response => {
             if (!response.ok) {
@@ -41,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Art piece created successfully:', data);
-            // Optionally, you can redirect to another page or show a success message here
         })
         .catch(error => console.error('Error creating art piece:', error));
     });
