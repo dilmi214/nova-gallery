@@ -1,6 +1,5 @@
 package io.github.dilmi214.artgallery.nova_gallery.cloudinary;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
