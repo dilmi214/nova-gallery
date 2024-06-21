@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 artList.innerHTML = '';
                 data.forEach(artPiece => {
+
+                    const aArtPieceTag = document.createElement('a');
+                    aArtPieceTag.setAttribute('href', `/artPieces/artPiece/${artPiece.id}`); // Add the artist ID to the URL
+
+                    const aArtistTag = document.createElement('a');
+                    aArtistTag.setAttribute('href', `/artists/artistProfile/${artPiece.artist.id}`);
+
                     const artDiv = document.createElement('div');
                     artDiv.className = 'art-piece';
 
@@ -21,17 +28,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     price.textContent = `Price: $${artPiece.price}`;
 
                     const artist = document.createElement('p');
-                    artist.textContent = `Artist: ${artPiece.artist.name}`;
 
                     const image = document.createElement('img');
-                    image.src = artPiece.imageUrl; // Assuming the backend returns 'imageUrl'
+                    image.src = artPiece.imageUrl;
                     image.alt = artPiece.title;
                     image.className = 'art-image';
 
-                    artDiv.appendChild(title);
+                    aArtPieceTag.innerHTML = artPiece.title;
+                    artDiv.appendChild(aArtPieceTag);
+                    aArtistTag.innerHTML = artPiece.artist.name;
+                    artist.appendChild(aArtistTag);
+                    artDiv.appendChild(artist);
+                    //artDiv.appendChild(title);
                     artDiv.appendChild(description);
                     artDiv.appendChild(price);
-                    artDiv.appendChild(artist);
                     artDiv.appendChild(image);
 
                     artList.appendChild(artDiv);

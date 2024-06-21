@@ -33,8 +33,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 const aTag = document.createElement('a');
                 aTag.setAttribute('href', `/artPieces/artPiece/${artPiece.id}`); // Add the artist ID to the URL
                 aTag.innerHTML = artPiece.title;
+
+                const image = document.createElement('img');
+                image.src = artPiece.imageUrl;
+                image.alt = artPiece.title;
+                image.className = 'art-image';
+
+
+
                 const listItem = document.createElement('li');
                 listItem.appendChild(aTag)
+                listItem.appendChild(image);
+
                 artPieceList.appendChild(listItem);
             });
         } catch (error) {
