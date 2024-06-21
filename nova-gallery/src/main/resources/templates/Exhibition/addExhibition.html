@@ -3,8 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Exhibition</title>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
+<div class="topnav" id="myTopnav">
+    <a href="/">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn active">Artists</button>
+        <div class="dropdown-content">
+            <a href="/artists">Add Artist</a>
+            <a href="/artists/allArtists">View Artist</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" >Art</button>
+        <div class="dropdown-content">
+            <a href="/artPieces">Add Art Piece</a>
+            <a href="/artPieces/view">View All Art</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" >Exhibitions</button>
+        <div class="dropdown-content">
+            <a href="/exhibitions/add">Add Exhibition</a>
+            <a href="/exhibitions">View Exhibitions</a>
+        </div>
+    </div>
+    <a href="/about">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+
 <h1>Add Exhibition</h1>
 <form id="exhibitionForm" method="post">
     <label for="title">Title:</label><br>

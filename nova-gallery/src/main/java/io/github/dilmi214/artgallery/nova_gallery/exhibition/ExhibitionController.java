@@ -16,7 +16,7 @@ public class ExhibitionController {
         this.exhibitionService = exhibitionService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getAllExhibitions() {
         return "/Exhibition/exhibitions";
     }

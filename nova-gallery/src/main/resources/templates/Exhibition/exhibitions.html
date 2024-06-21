@@ -2,14 +2,10 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.com">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/artpiece.css}">
+    <title>Exhibitions</title>
     <link rel="stylesheet" th:href="@{/css/navbar.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script th:src="@{/js/addArtPiece.js}"></script>
-    <title>Create Art Piece</title>
 </head>
-<body>
 
 <div class="topnav" id="myTopnav">
     <a href="/">Home</a>
@@ -40,27 +36,7 @@
     </a>
 </div>
 
-<h1>Create Art Piece</h1>
-<form id="artPieceForm"   method="post" enctype="multipart/form-data">
-    <label for="title">Title:</label><br>
-    <input type="text" id="title" name="title" required><br><br>
-
-    <label for="description">Description:</label><br>
-    <textarea id="description" name="description" required></textarea><br><br>
-
-    <label for="price">Price:</label><br>
-    <input type="number" id="price" name="price" step="0.01" min="0" required><br><br>
-
-    <label for="image">Upload Image:</label>
-    <input type="file" id="image" name="image" accept="image/*" required><br><br>
-
-    <label for="artist">Select Artist:</label><br>
-    <select id="artist" name="artist" required>
-        <!-- Artists will be dynamically added here -->
-    </select><br><br>
-
-    <input type="submit" value="Submit">
-</form>
+<body>
 
 </body>
 </html>
