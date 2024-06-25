@@ -1,5 +1,6 @@
 package io.github.dilmi214.artgallery.nova_gallery.artpiece;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.dilmi214.artgallery.nova_gallery.artist.Artist;
 import io.github.dilmi214.artgallery.nova_gallery.curator.Curator;
 import io.github.dilmi214.artgallery.nova_gallery.exhibition.Exhibition;
@@ -19,12 +20,20 @@ public class ArtPiece {
     private String description;
     @Column(nullable = false)
     private Double price;
+    @Column(nullable = true)
+    private String imageUrl;
+
+//    @Lob
+//    @Column(name = "image", columnDefinition="BLOB")
+//    private byte[] image;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 
+
     @ManyToMany(mappedBy = "artPieces")
+    @JsonIgnore
     private List<Exhibition> exhibitions;
 
     @OneToOne(mappedBy = "artPiece", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -38,19 +47,22 @@ public class ArtPiece {
     public ArtPiece() {
     }
 
-    public ArtPiece(Integer id, String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(Integer id, String title, String description, Double price, String imageUrl, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
+        this.imageUrl = imageUrl;
         this.exhibitions = exhibitions;
         this.sale = sale;
+        this.curator = curator;
     }
 
-    public ArtPiece(String title, String description, Double price, List<Exhibition> exhibitions, Sale sale) {
+    public ArtPiece(String title, String description, Double price, String imageUrl, List<Exhibition> exhibitions, Sale sale, Curator curator) {
         this.title = title;
         this.description = description;
         this.price = price;
+        this.imageUrl = imageUrl;
         this.exhibitions = exhibitions;
         this.sale = sale;
         this.curator = curator;
@@ -67,6 +79,14 @@ public class ArtPiece {
     public String getTitle() {
         return title;
     }
+
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -120,6 +140,14 @@ public class ArtPiece {
         this.artist = artist;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "ArtPiece{" +
@@ -132,4 +160,5 @@ public class ArtPiece {
                 ", curator=" + curator +
                 '}';
     }
+
 }
