@@ -2,6 +2,7 @@ package io.github.dilmi214.artgallery.nova_gallery.exhibition;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +17,17 @@ public class ExhibitionController {
         this.exhibitionService = exhibitionService;
     }
 
-    @GetMapping("")
-    public String getAllExhibitions() {
+    @GetMapping("/")
+    public String getAllExhibitions(Model model) {
+        List<Exhibition> exhibitions = exhibitionService.getAllExhibitions();
+        model.addAttribute("exhibitions", exhibitions);
         return "/Exhibition/exhibitions";
     }
 
     @GetMapping("/{id}")
-    public String getExhibition() {
+    public String getExhibition(Model model, @PathVariable Integer id) {
+        Exhibition exhibition = exhibitionService.getExhibition(id);
+        model.addAttribute("exhibition", exhibition);
         return "/Exhibition/exhibition";
     }
 

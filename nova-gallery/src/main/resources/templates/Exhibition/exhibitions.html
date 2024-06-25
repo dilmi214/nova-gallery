@@ -7,35 +7,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div class="topnav" id="myTopnav">
-    <a href="/">Home</a>
-    <div class="dropdown">
-        <button class="dropbtn active">Artists</button>
-        <div class="dropdown-content">
-            <a href="/artists">Add Artist</a>
-            <a href="/artists/allArtists">View Artist</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn" >Art</button>
-        <div class="dropdown-content">
-            <a href="/artPieces">Add Art Piece</a>
-            <a href="/artPieces/view">View All Art</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn" >Exhibitions</button>
-        <div class="dropdown-content">
-            <a href="/exhibitions/add">Add Exhibition</a>
-            <a href="/exhibitions">View Exhibitions</a>
-        </div>
-    </div>
-    <a href="/about">About</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
+<!--<div class="topnav" id="myTopnav">-->
+<!--    <a href="/">Home</a>-->
+<!--    <div class="dropdown">-->
+<!--        <button class="dropbtn active">Artists</button>-->
+<!--        <div class="dropdown-content">-->
+<!--            <a href="/artists">Add Artist</a>-->
+<!--            <a href="/artists/allArtists">View Artist</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="dropdown">-->
+<!--        <button class="dropbtn" >Art</button>-->
+<!--        <div class="dropdown-content">-->
+<!--            <a href="/artPieces">Add Art Piece</a>-->
+<!--            <a href="/artPieces/view">View All Art</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="dropdown">-->
+<!--        <button class="dropbtn" >Exhibitions</button>-->
+<!--        <div class="dropdown-content">-->
+<!--            <a href="/exhibitions/add">Add Exhibition</a>-->
+<!--            <a href="/exhibitions">View Exhibitions</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <a href="/about">About</a>-->
+<!--    <a href="javascript:void(0);" class="icon" onclick="myFunction()">-->
+<!--        <i class="fa fa-bars"></i>-->
+<!--    </a>-->
+<!--</div>-->
 
+<div id="exhibitionList">
+    <ul>
+        <li th:each="exhibition : ${exhibitions}">
+            <div class="exhibition">
+                <a th:href="@{/exhibitions/{id}(id=${exhibition.id})}">
+                    <h2 th:text="${exhibition.name}"></h2>
+                </a>
+                <p th:text="${exhibition.description}"></p>
+                <p th:text="'Start Date: ' + ${exhibition.startDate}"></p>
+                <p th:text="'End Date: ' + ${exhibition.endDate}"></p>
+                <p th:text="'Location: ' + ${exhibition.location}"></p>
+
+                <!--                <img th:src="${exhibition.imageUrl}" th:alt="${exhibition.title}" class="exhibition-image"/>-->
+                <div class="art-piece-list">
+                    <h3>Art Pieces:</h3>
+                    <ul>
+                        <li th:each="artPiece : ${exhibition.artPieces}" class="art-piece-item">
+                            <span th:text="${artPiece.title}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
 <body>
 
 </body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Exhibitions</title>
+</head>
+<body>
+<div id="exhibition">
+    <h2 th:text="${exhibition.name}"></h2>
+    <p th:text="${exhibition.description}"></p>
+    <p th:text="'Start Date: ' + ${exhibition.startDate}"></p>
+    <p th:text="'End Date: ' + ${exhibition.endDate}"></p>
+    <p th:text="'Location: ' + ${exhibition.location}"></p>
+    <div class="art-piece-list">
+        <h3>Art Pieces:</h3>
+        <ul>
+            <li th:each="artPiece : ${exhibition.artPieces}" class="art-piece-item">
+                <a th:href="@{/artPieces/artPiece/{id}(id=${artPiece.id})}">
+                    <span th:text="${artPiece.title}"></span>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

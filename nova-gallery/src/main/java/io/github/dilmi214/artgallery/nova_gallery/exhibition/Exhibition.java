@@ -14,31 +14,34 @@ public class Exhibition {
 
     @Column(nullable = false, length = 250)
     private String name;
+    private String description;
     private LocalDate startDate;
     private LocalDate endDate;
     private Location location;
     @ManyToMany
     @JoinTable(
-            name = "exhibition_artpiece",
+            name = "exhibition_artPiece",
             joinColumns = @JoinColumn(name = "exhibition_id"),
-            inverseJoinColumns = @JoinColumn(name = "artpiece_id")
+            inverseJoinColumns = @JoinColumn(name = "artPiece_id")
     )
     private List<ArtPiece> artPieces;
 
     public Exhibition() {
     }
 
-    public Exhibition(Integer id, String name, LocalDate startDate, LocalDate endDate, Location location, List<ArtPiece> artPieces) {
+    public Exhibition(Integer id, String name, String description, LocalDate startDate, LocalDate endDate, Location location, List<ArtPiece> artPieces) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
         this.artPieces = artPieces;
     }
 
-    public Exhibition(String name, LocalDate startDate, LocalDate endDate, Location location, List<ArtPiece> artPieces) {
+    public Exhibition(String name, String description, LocalDate startDate, LocalDate endDate, Location location, List<ArtPiece> artPieces) {
         this.name = name;
+        this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
@@ -92,4 +95,14 @@ public class Exhibition {
     public void setArtPieces(List<ArtPiece> artPieces) {
         this.artPieces = artPieces;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }
