@@ -1,6 +1,7 @@
 package io.github.dilmi214.artgallery.nova_gallery.sale;
 
 import io.github.dilmi214.artgallery.nova_gallery.model.Sale;
+import io.github.dilmi214.artgallery.nova_gallery.service.SaleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

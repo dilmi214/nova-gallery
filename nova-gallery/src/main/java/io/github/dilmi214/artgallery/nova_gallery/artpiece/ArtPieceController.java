@@ -1,6 +1,7 @@
 package io.github.dilmi214.artgallery.nova_gallery.artpiece;
 
 import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
+import io.github.dilmi214.artgallery.nova_gallery.service.ArtPieceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

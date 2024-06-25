@@ -1,7 +1,6 @@
-package io.github.dilmi214.artgallery.nova_gallery.sale;
+package io.github.dilmi214.artgallery.nova_gallery.service;
 
 import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPieceService;
 import io.github.dilmi214.artgallery.nova_gallery.model.Sale;
 import io.github.dilmi214.artgallery.nova_gallery.repository.SaleRepository;
 import org.springframework.stereotype.Service;

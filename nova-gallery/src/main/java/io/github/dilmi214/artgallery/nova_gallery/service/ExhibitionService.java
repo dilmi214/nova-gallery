@@ -1,4 +1,4 @@
-package io.github.dilmi214.artgallery.nova_gallery.exhibition;
+package io.github.dilmi214.artgallery.nova_gallery.service;
 
 import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
 import io.github.dilmi214.artgallery.nova_gallery.model.Location;
