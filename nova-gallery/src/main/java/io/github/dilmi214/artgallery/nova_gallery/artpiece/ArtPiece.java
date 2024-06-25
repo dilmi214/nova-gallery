@@ -1,5 +1,6 @@
 package io.github.dilmi214.artgallery.nova_gallery.artpiece;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.dilmi214.artgallery.nova_gallery.artist.Artist;
 import io.github.dilmi214.artgallery.nova_gallery.curator.Curator;
 import io.github.dilmi214.artgallery.nova_gallery.exhibition.Exhibition;
@@ -32,6 +33,7 @@ public class ArtPiece {
 
 
     @ManyToMany(mappedBy = "artPieces")
+    @JsonIgnore
     private List<Exhibition> exhibitions;
 
     @OneToOne(mappedBy = "artPiece", cascade = CascadeType.ALL, orphanRemoval = true)
