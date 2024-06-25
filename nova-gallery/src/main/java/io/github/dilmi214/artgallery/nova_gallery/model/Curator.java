@@ -1,35 +1,33 @@
-package io.github.dilmi214.artgallery.nova_gallery.customer;
+package io.github.dilmi214.artgallery.nova_gallery.model;
 
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
-import io.github.dilmi214.artgallery.nova_gallery.sale.Sale;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Customer {
+public class Curator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Sale> purchases;
+    @OneToMany(mappedBy = "curator", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArtPiece> managedArtPieces;
 
-    public Customer() {
+    public Curator() {
     }
 
-    public Customer(Integer id, String name, String email, List<Sale> purchases) {
+    public Curator(Integer id, String name, String email, List<ArtPiece> managedArtPieces) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.purchases = purchases;
+        this.managedArtPieces = managedArtPieces;
     }
 
-    public Customer(String name, String email, List<Sale> purchases) {
+    public Curator(String name, String email, List<ArtPiece> managedArtPieces) {
         this.name = name;
         this.email = email;
-        this.purchases = purchases;
+        this.managedArtPieces = managedArtPieces;
     }
 
     public Integer getId() {
@@ -56,21 +54,21 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Sale> getPurchases() {
-        return purchases;
+    public List<ArtPiece> getManagedArtPieces() {
+        return managedArtPieces;
     }
 
-    public void setPurchases(List<Sale> purchases) {
-        this.purchases = purchases;
+    public void setManagedArtPieces(List<ArtPiece> managedArtPieces) {
+        this.managedArtPieces = managedArtPieces;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Curator{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", purchases=" + purchases +
+                ", managedArtPieces=" + managedArtPieces +
                 '}';
     }
 }

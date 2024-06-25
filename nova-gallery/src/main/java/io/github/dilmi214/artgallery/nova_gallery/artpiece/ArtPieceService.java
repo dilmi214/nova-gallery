@@ -1,6 +1,7 @@
 package io.github.dilmi214.artgallery.nova_gallery.artpiece;
 
-import io.github.dilmi214.artgallery.nova_gallery.artist.Artist;
+import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
+import io.github.dilmi214.artgallery.nova_gallery.model.Artist;
 import io.github.dilmi214.artgallery.nova_gallery.artist.ArtistRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

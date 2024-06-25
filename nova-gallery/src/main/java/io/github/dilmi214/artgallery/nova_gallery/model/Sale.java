@@ -1,7 +1,5 @@
-package io.github.dilmi214.artgallery.nova_gallery.sale;
+package io.github.dilmi214.artgallery.nova_gallery.model;
 
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
-import io.github.dilmi214.artgallery.nova_gallery.customer.Customer;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

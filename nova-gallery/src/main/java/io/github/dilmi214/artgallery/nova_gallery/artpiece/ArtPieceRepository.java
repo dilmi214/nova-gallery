@@ -1,5 +1,6 @@
 package io.github.dilmi214.artgallery.nova_gallery.artpiece;
 
+import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

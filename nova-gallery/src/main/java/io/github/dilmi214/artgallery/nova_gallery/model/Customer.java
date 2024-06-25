@@ -1,34 +1,33 @@
-package io.github.dilmi214.artgallery.nova_gallery.curator;
+package io.github.dilmi214.artgallery.nova_gallery.model;
 
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPiece;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Curator {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
-    @OneToMany(mappedBy = "curator", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ArtPiece> managedArtPieces;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Sale> purchases;
 
-    public Curator() {
+    public Customer() {
     }
 
-    public Curator(Integer id, String name, String email, List<ArtPiece> managedArtPieces) {
+    public Customer(Integer id, String name, String email, List<Sale> purchases) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.managedArtPieces = managedArtPieces;
+        this.purchases = purchases;
     }
 
-    public Curator(String name, String email, List<ArtPiece> managedArtPieces) {
+    public Customer(String name, String email, List<Sale> purchases) {
         this.name = name;
         this.email = email;
-        this.managedArtPieces = managedArtPieces;
+        this.purchases = purchases;
     }
 
     public Integer getId() {
@@ -55,21 +54,21 @@ public class Curator {
         this.email = email;
     }
 
-    public List<ArtPiece> getManagedArtPieces() {
-        return managedArtPieces;
+    public List<Sale> getPurchases() {
+        return purchases;
     }
 
-    public void setManagedArtPieces(List<ArtPiece> managedArtPieces) {
-        this.managedArtPieces = managedArtPieces;
+    public void setPurchases(List<Sale> purchases) {
+        this.purchases = purchases;
     }
 
     @Override
     public String toString() {
-        return "Curator{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", managedArtPieces=" + managedArtPieces +
+                ", purchases=" + purchases +
                 '}';
     }
 }

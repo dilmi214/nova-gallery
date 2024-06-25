@@ -1,10 +1,6 @@
-package io.github.dilmi214.artgallery.nova_gallery.artpiece;
+package io.github.dilmi214.artgallery.nova_gallery.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.github.dilmi214.artgallery.nova_gallery.artist.Artist;
-import io.github.dilmi214.artgallery.nova_gallery.curator.Curator;
-import io.github.dilmi214.artgallery.nova_gallery.exhibition.Exhibition;
-import io.github.dilmi214.artgallery.nova_gallery.sale.Sale;
 import jakarta.persistence.*;
 
 import java.util.List;

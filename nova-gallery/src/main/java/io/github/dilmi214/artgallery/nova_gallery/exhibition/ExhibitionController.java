@@ -1,6 +1,6 @@
 package io.github.dilmi214.artgallery.nova_gallery.exhibition;
 
-import org.springframework.http.HttpStatus;
+import io.github.dilmi214.artgallery.nova_gallery.model.Exhibition;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

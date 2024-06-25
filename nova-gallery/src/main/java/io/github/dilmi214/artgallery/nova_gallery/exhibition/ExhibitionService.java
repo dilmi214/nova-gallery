@@ -1,6 +1,10 @@
 package io.github.dilmi214.artgallery.nova_gallery.exhibition;
 
+import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
+import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPieceRepository;
+import io.github.dilmi214.artgallery.nova_gallery.model.Exhibition;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 
 import java.util.List;
 
@@ -8,9 +12,21 @@ import java.util.List;
 public class ExhibitionService {
 
     private final ExhibitionRepository exhibitionRepository;
+    private final ArtPieceRepository artPieceRepository;
 
-    public ExhibitionService(ExhibitionRepository exhibitionRepository) {
+    public ExhibitionService(ExhibitionRepository exhibitionRepository, ArtPieceRepository artPieceRepository) {
         this.exhibitionRepository = exhibitionRepository;
+        this.artPieceRepository = artPieceRepository;
+    }
+
+    public Exhibition createExhibition1(Exhibition exhibition) {
+        List<ArtPiece> artPieces = new ArrayList<>();
+        for (ArtPiece artPiece : exhibition.getArtPieces()) {
+            Integer id = artPiece.getId();
+            artPieceRepository.findById(id).ifPresent(artPieces::add);
+        }
+        exhibition.setArtPieces(artPieces);
+        return exhibitionRepository.save(exhibition);
     }
 
     public Exhibition createExhibition(Exhibition exhibition) {
