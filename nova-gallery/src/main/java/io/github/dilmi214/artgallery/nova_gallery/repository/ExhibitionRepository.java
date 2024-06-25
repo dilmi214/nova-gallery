@@ -1,5 +1,6 @@
-package io.github.dilmi214.artgallery.nova_gallery.exhibition;
+package io.github.dilmi214.artgallery.nova_gallery.repository;
 
+import io.github.dilmi214.artgallery.nova_gallery.model.Location;
 import io.github.dilmi214.artgallery.nova_gallery.model.Exhibition;
 import org.springframework.data.jpa.repository.JpaRepository;
 

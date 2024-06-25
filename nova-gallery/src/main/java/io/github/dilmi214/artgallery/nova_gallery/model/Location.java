@@ -1,4 +1,4 @@
-package io.github.dilmi214.artgallery.nova_gallery.exhibition;
+package io.github.dilmi214.artgallery.nova_gallery.model;
 
 public enum Location {
     MAIN_GALLERY,

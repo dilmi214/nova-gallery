@@ -1,6 +1,5 @@
 package io.github.dilmi214.artgallery.nova_gallery.model;
 
-import io.github.dilmi214.artgallery.nova_gallery.exhibition.Location;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

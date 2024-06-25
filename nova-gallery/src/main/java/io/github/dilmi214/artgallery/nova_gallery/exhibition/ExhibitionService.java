@@ -1,8 +1,10 @@
 package io.github.dilmi214.artgallery.nova_gallery.exhibition;
 
 import io.github.dilmi214.artgallery.nova_gallery.model.ArtPiece;
-import io.github.dilmi214.artgallery.nova_gallery.artpiece.ArtPieceRepository;
+import io.github.dilmi214.artgallery.nova_gallery.model.Location;
+import io.github.dilmi214.artgallery.nova_gallery.repository.ArtPieceRepository;
 import io.github.dilmi214.artgallery.nova_gallery.model.Exhibition;
+import io.github.dilmi214.artgallery.nova_gallery.repository.ExhibitionRepository;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
